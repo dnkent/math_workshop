@@ -1,0 +1,17 @@
+\section{Calculus V}
+
+\subsection{Double Integrals}
+
+Sometimes we want to integrate the area of a function depending on multiple variables. In this case we can take a double integral. We just take the integral of the function with respect to one variable. And then we integrate the outcome with respect to another variable:
+
+\begin{align*}
+    & \int_{x_2 = 0}^1 \int_{x_1 = -1}^1 (x_1^2 + x_2^2) d x_1 d x_2 \\
+    = & \int_0^1 \left[\int_{-1}^1 (x_1^2 + x_2^2) d x_1 \right]d x_2 \\
+    = & \int_0^1 \left[ \frac{1}{3}x_1^3 + x_1x_2^2 \right]_{-1}^1 d x_2 \\
+    = & \int_0^1 \left\{\left[ \frac{1}{3}1^3 + 1x_2^2 \right]
+        - \left[\frac{1}{3}-1^3 + (-1)x_2^2\right]\right\}d x_2 \\
+    = & \int_0^1 \left(\frac{2}{3} + 2x_2^2\right) d x_2 \\
+    = & \left[\frac{2}{3}x_2 + \frac{2}{3}x_2^3\right]_0^1 \\
+    = & \frac{4}{3}
+\end{align*}
+% Now wrap-up test

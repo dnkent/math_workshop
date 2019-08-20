@@ -1,0 +1,160 @@
+\section{Lecture 2: Basic Mathematics II}
+
+\subsection{Summation Operator}
+
+\begin{itemize}
+    \item Consider a set $X = \{x_1, x_2, ..., x_n\}$
+    \begin{itemize}
+        \item $\sum\limits_{i = 1}^{n} x_i = x_1 + x_2 + ... + x_n$
+        \begin{itemize}
+            \item ``The sum of $x_i$, over the range from $i=l$ through $i = n$.''
+        \end{itemize}
+    \end{itemize}
+    \item Let $Y = \{y_1, y_2, ..., y_n\}$ 
+    \begin{itemize}
+        \item $\sum\limits_{i=1}^n x_iy_i = x_1y_1 + x_2y_2 + ... + x_ny_n$ 
+        \begin{itemize}
+            \item Here, we sum the outcome of $x_iy_i$ $n$ times.
+        \end{itemize}
+    \end{itemize}
+    \item But, what if there is more than one summation operator and subscript?
+    \vspace{-1em}
+    \begin{align*}
+        \Sigma_{j=1}^m \Sigma_{i=1}^n x_iy_j 
+        & = (y_1x_1 + y_1x_2 + ... + y_1x_n)   \\
+        & + (y_2x_1 + y_2x_2 + ... + y_2x_n) \\
+        & + ... + (y_mx_1 + y_mx_2 + ... + y_mx_n)
+    \end{align*}
+    We have $m$ parentheses, with $n$ $x$'s in each parenthesis. We end up summing each combination of $x_i$ and $y_j$.
+    \item What if there is a constant, $c$? Drawing upon the \emph{distributive property}:
+    \begin{itemize}
+        \item $\sum\limits_{i = 1}^{n} cx_i = cx_1 + cx_2 + ... + cx_n = c\sum\limits_{i = 1}^{n} x_i$
+    \end{itemize}
+    \item The \emph{associative property} can also be applied to summation:
+    \begin{itemize}
+        \item $\sum\limits_{i=1}^n (x_i + y_i) = (x_1 + y_1) + (x_2 + y_2)
+            + ... + (x_n + y_n) = \sum\limits_{i=1}^n x_i + \sum\limits_{i=1}^n y_i$
+    \end{itemize}
+\end{itemize}
+
+\subsection{Product Operator}
+
+\begin{itemize}
+    \item $X = \{x_1, x_2, ..., x_n\}$ and $Y = \{y_1, y_2, ..., y_n\}$ 
+    \item $\prod\limits_{i=1}^n x_i = x_1 \cdot x_2 \cdot ... \cdot x_n$
+    \item $\prod\limits_{i=1}^n (x_i + y_i) = (x_1 + y_1)(x_2 + y_2) ...
+        (x_n + y_n)$
+    \begin{itemize}
+        \item We can't split $(x_i + y_i)$ like in summation. Instead, we multiply $(x_i + y_i)$ repeatedly.
+    \end{itemize}
+    \item What about a constant? 
+    \begin{itemize}
+        \item $\prod\limits_{i = 1}^{n} cx_i = (cx_1)(cx_2) \cdot ... \cdot
+            (cx_n) = c^n\prod\limits_{i = 1}^{n} x_i$
+    \end{itemize}
+    We can move $c$ to the front, but we have to exponentiate it to $c^n$.
+\end{itemize}
+
+\subsection{Factorials, Permutations, and Combinations}
+
+Most of our quantitative coursework is about modeling probabilities, where: 
+
+\begin{equation*}
+    \text{probability} = \frac{\# \text{occurences}}{\# \text{possibilities}}
+\end{equation*}
+
+\noindent For both the numerator and denominator we are dealing with \emph{counting} the number of relevant outcomes. Factorials, permutations, and combinations are foundational concepts when it comes to counting. 
+
+\begin{itemize}
+    \item Some useful illustrations/properties:
+    \begin{itemize}
+        \item $0! = 1$ 
+        \item $x! = x \cdot (x-1) \cdot (x-2) \cdot ... \cdot 0!$
+        \item $2! = 2 \cdot 1$
+        \item $3! = 3 \cdot 2 \cdot 1$
+        \item $10! = 10 \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot ... \cdot 1$ 
+        \item If $n$ objects in boxes of size $x$ where \emph{order matters}, then the number of \emph{permutations} is:
+        \begin{equation*}
+            \frac{n!}{(n - x)}
+        \end{equation*}
+        \item If order does not matter, then the number of \emph{combinations} is:
+        \begin{equation*}
+            \frac{n!}{(n - x)! x!} = n C x = {n \choose x }
+        \end{equation*}
+        \begin{itemize}
+            \item Pronounced: `$n$ choose $x$'
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Solving equations, inequalities, and for roots}
+
+\begin{itemize}
+    \item Solving an equation example:
+    \begin{align*}
+        3x + 4y + 8 & = 0 \\
+        4y & = - (3x + 8) \\
+        y & = \frac{- (3x + 8)}{4} \\
+        y & = -\frac{3}{4}x - 2
+    \end{align*}
+    
+    \noindent We can also write this answer as:
+    
+    \begin{equation*}
+        \{(x,y) \in \mathbb{R} | y = - \frac{3}{4} x - 2 \}
+    \end{equation*}
+    
+    \item Solving an inequality ($x > $, $x \geq y$, $y < x$, $y \leq x$) example:
+    \begin{align*}
+        -4y & > 2x + 12 \\
+        y & < -\frac{2x}{4} - \frac{12}{4} \\
+        y & < \frac{x}{2} - 3
+    \end{align*}
+
+    \noindent Note that dividing by a negative flips the sign
+
+    \item Solving for a quadratic
+    \begin{itemize}
+        \item Quadratic formula:
+        \begin{align*}
+            & ax^2 + bx + c \\
+            & x \in \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+        \end{align*}
+        \noindent Example:
+        \begin{align*}
+            & 1.4x^2 + 3.7x + 1.1 = 0 \\
+            & a = 1.4, b = 3.7, c = 1.1 \\
+            & x = \frac{-3.7 \pm \sqrt{3.7^2 -
+                4 \times 1.4 \times 1.1}}{2.8} \\
+            & x = - 0.341 \text{ or } x = -2.301 
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+\subsection{Logarithms}
+
+\begin{itemize}
+    \item If $y = a^x$, then we can rewrite as $\text{log}_a y = x$
+    \item Examples: 
+    \begin{itemize}
+        \item $\text{log}_e e = 1$, because $e^1 = e$ 
+        \item Solving for $x$: 
+        \begin{itemize}
+            \item If $8 = 2^x$, then $\text{log}_2 8 = x = 3$
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Rules}
+    \begin{itemize}
+        \item $\text{log}(m + n) = \text{log}(m) + \text{log}(n)$ 
+        \item $\text{log}(\frac{m}{n}) = \text{log}(m) - \text{log}(n)$
+        \item $\text{log}(b^a) = a \text{log} b$
+        \item $\text{log}b^a = (\text{log}_be)(\text{log}_ea)$ 
+        \item $\text{log}b^a = \frac{1}{\text{log}_ab}$
+    \end{itemize}
+    \item \textbf{Visual}
+    
+    \resizebox{4in}{!}{
+        \input{figures/logarithm.tex}
+    }
+    \item Note: $log_e(x) \equiv ln(x)$, pronounced the `natural logarithm' 
+\end{itemize}

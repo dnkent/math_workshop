@@ -1,0 +1,127 @@
+\section{Calculus II}
+
+\subsection{The Chain Rule}
+
+Let's revisit the chain rule in more detail. Another way to write it out is:
+
+\begin{equation*}
+    \frac{dy}{dx} = \frac{dy}{du} \times \frac{du}{dx}
+\end{equation*}
+
+\noindent So we first specify one of the functions as $u$ and then calculate $\frac{dy}{du}$. Then we calculate $\frac{du}{dx}$, which is the change in the function $u$, given a change in $x$. Last, we write out the product of the two derivatives. This is an incredibly common and powerful trick. One more example:
+
+\begin{align*}
+    y & = \left[\frac{(x^2 + 1)(3x+9)}{(8x^2 - 9)}\right]^3 \\
+    u & = \frac{(x^2 + 1)(3x+9)}{(8x^2 - 9)} \\
+    \frac{dx}{dy} & =  3[u]^2 \cdot u'
+\end{align*}
+
+\noindent Where we solve for $u'$ with the product and quotient rules.
+
+\subsection{Implicit Differentiation}
+
+Sometimes we cannot fully $x$ and $y$ when finding $\frac{dy}{dx}$. This means we cannot solve for $y$ solely in terms of $x$. We use implicit differentiation for these situations. You'll notice that our answer to the following example includes both $x$ and $y$. The trick is to write out all parts of our function in terms of $\frac{dy}{dx}$. Then we solve for $\frac{dy}{dx}$.
+
+\begin{align*}
+    f(x,y) = y^5 + xy + x^2 \, \, \, \text{at } f(x,y) & = 3 \\ 
+    \frac{d}{dx} f(x,y) & = \frac{d}{dx}(3) \\
+    \frac{d}{dx} (y^5 + xy + x^2) & = \frac{d}{dx} (3) \\
+    \frac{d}{dy}y^5 + \frac{d}{dx}xy + \frac{d}{dx}x^2 & = 0 \\
+    5y^4 + \frac{dx}{dx}y + x\frac{dy}{dx} + 2x & = 0 \\
+    5y^4 + y + \frac{dy}{dx}x + 2x & = 0 \\
+    \frac{dy}{dx} & = \frac{-5y^4 - y - 2x}{x}
+\end{align*}
+
+Now, we have a quantity for $\frac{dy}{dx}$, it just depends upon the values of $x$ \emph{and} $y$.
+
+\subsection{Partial Derivatives}
+
+What if we have a multivariate function (multiple variables are changing) and are only concerned with the change in $y$, given the change in \emph{one} variable? The trick is to treat other variables as a constant, because we are only concerned with variation in one variable. So:
+
+\begin{align*}
+    f(x,y) & = 5x^2y^3 \\
+    \frac{df}{dx} & = 10xy^3 \\
+    \frac{df}{dy} & = 15x^2y^2
+\end{align*}
+
+\noindent Some additional notation: $\frac{df}{dx} = f_x$ or 
+$\frac{df}{dy} = f_y$
+
+\noindent Examples:
+
+\begin{align*}
+    f(x,y) & = (x + 4)(3x + 2y) \\
+    f_x & = 1 \cdot (3x + 2y) + (x + 4)(3) \\
+    f_y & = 0(3x + 2y) + (x + 4)2 \\
+        & = 2(x + 4)
+\end{align*}
+
+\noindent But:
+
+\begin{align*}
+    f(x, y, z) & = (x + 4)(3x + 2y)(3z) \\
+    f_z & = 3(x + 4)(3x + 2y)
+\end{align*}
+
+\noindent This last example is simpler because the other parts of the function don't include $z$, so we treat them like constants and then derive $3z$.
+
+\subsection{Gradient}
+
+A vector with all of a function's patial derivatives is the \textbf{gradient}. Take a function $f(x)$, with $n$ variables. The gradient -- or $\nabla f(x)$ -- is: 
+
+\begin{equation*}
+    \nabla f(x) = \left[\frac{d f(x)}{dx_1}, \frac{d f(x)}{dx_2}, 
+    ..., \frac{d f(x)}{dx_n}\right]
+\end{equation*}
+
+\noindent For a function $f(x,y) = \left[\frac{df}{dx}, \frac{df}{dy}\right] = [f_x, f_y]$
+
+\subsection{Second Derivatives and the Hessian}
+
+We can take higher-order derivatives, which are just the rate of change of the previous derivative. I.e. $f(x) = x^3$, $f'(x) = 3x^2$, $f''(x) = 6x$, and so on... 
+
+\noindent In your statistics courses you will encounter the \textbf{Hessian}, which is a matrix of all combinations of second derivatives:
+
+\begin{equation*}
+    \begin{bmatrix}
+        \frac{d^2f}{dx_1 dx_1} & ... & \frac{d^2f}{dx_n dx_1} \\
+        \frac{d^2f}{dx_2 dx_1} & \frac{d^2f}{dx_2 dx_2} & \vdots \\
+        \vdots & & \ddots \\
+        \frac{d^2f}{dx_n dx_1} & ... & \frac{d^2f}{dx_n dx_n}
+    \end{bmatrix}
+\end{equation*}
+
+\noindent This gives us the change of the curvature of a function in all directions. 
+
+\subsection{More on limits}
+
+We can also take `one-sided' limits, which come from different directions. Consider $f(x) = \frac{1}{x}$:
+
+\begin{align*}
+    & \lim_{x \rightarrow 0^+} \frac{1}{x} = +\infty \\
+    & \lim_{x \rightarrow 0^-} \frac{1}{x} = -\infty
+\end{align*}
+
+We also sometimes need to simplify a function to find the limit. In this example, plugging 1 in gives us 0/0. But simplifying gives us 2.
+
+\begin{align*}
+    \lim_{x \rightarrow 1} \frac{1 - x^2}{1-x} = \frac{(1-x)(1+x)}{1-x} = 1 + x = 2 
+\end{align*}
+
+\subsection{L'H$\hat{\text{o}}$pital's Rule}
+
+One more trick for limits: If $\lim_{x \rightarrow c} f(x) = \lim_{x \rightarrow c} g(x) = 0$ or $= \pm \infty$, \emph{and} $\lim_{x \rightarrow c} \frac{f'(x)}{g'(x)}$ exists, then:
+
+\begin{equation*}
+    \lim_{x \rightarrow c} \frac{f(x)}{g(x)} = \lim_{x \rightarrow c} \frac{f'(x)}{g'(x)}
+\end{equation*}
+
+\noindent This is useful for undefined limits. Ex:
+
+\begin{align*}
+    \lim_{x \rightarrow 1} \frac{x^2 - 1}{x^2 + 3x - 4} & = 
+        \frac{1^2 - 1}{1^2 + 3(1) - 4} = \frac{0}{0} \\
+    & = \lim_{x \rightarrow 1} \frac{2x}{2x + 3} \\
+    & = \frac{2(1)}{2(1) + 3} \\
+    & = \frac{2}{5}
+\end{align*}

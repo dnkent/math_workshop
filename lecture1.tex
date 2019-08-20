@@ -1,0 +1,251 @@
+\section{Lecture 1: Introduction, Notation, Definitions, and Basic Mathematics}
+
+\subsection{Course Overview}
+
+%What is the purpose of this course? These notes constitute lectures about basic math, linear algebra, and calculus for incoming Ph.D. students to Ohio State's Political Science graduate program. The course runs for two weeks and no mathematical background behind high school algebra is assumed. That said, prior math training among incoming students tends to vary widely. While some students have taken extensive relevant coursework in college, others have not picked up a mathematics textbook since their senior year in high school. The course is designed with this variation in training in mind. Students already exposed to the following concepts will benefit from a review -- there is always more to learn -- and the material covered is intentionally cursory so that those without prior experience are not overwhelmed. Either way, when presented with new mathematical concepts in subsequent statistics or formal theory courses, students will have a set of notes and enough prior exposure to help them figure out what equations represent and how to solve them. 
+Although not all of the following material is drawn from \citet{moore2013mathematics}, the overlap is sizeable and intentional. Many thanks to the authors. Some of the examples are also drawn from Jason Morgan's lectures from when I took the same course at the start of graduate school. Many thanks also to Drew Rosenberg.
+
+\onehalfspacing
+
+\subsection{Variables and Constants}
+
+\begin{itemize}
+    \item \textbf{Variable}: A concept or a measure that takes different values in a given set.
+    \begin{itemize}
+        \item E.g., GDP, polity score, party identification, etc.
+    \end{itemize}
+    \item \textbf{Constant}: A concept or a measure that has a single value for a given set.
+\end{itemize}
+
+\subsection{Number Types and Notation}
+
+% https://tex.stackexchange.com/questions/148252/help-drawing-a-very-simple-number-line-using-tikz
+\begin{center}
+    \begin{tikzpicture}
+        \draw[latex-latex] (-5,0) -- (5,0) ; %edit here for the axis
+        \foreach \x in  {0} % edit here for the vertical lines
+        \draw[shift={(\x,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+        \foreach \x in {0} % edit here for the numbers
+        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-3pt) node[below] 
+        {$\x$};
+        %\draw[*-o] (0.92,0) -- (2.08,0);
+        %\draw[very thick] (0.92,0) -- (1.92,0);
+    \end{tikzpicture}        
+\end{center}
+
+\begin{itemize}
+    \itemsep-0.5em 
+    \item \textbf{Real numbers}: ($\mathbb{R}$), can be placed anywhere on the line
+    \item \textbf{Natural numbers}: ($\mathbb{N}$), positive with no decimal
+    \item \textbf{Integer}: ($\mathbb{Z}$), non-decimal, both positive and negative
+    \item \textbf{Rational number}: can be expressed as a ratio or fraction
+    \item \textbf{Irrational number}: cannot be expressed as a fraction: $\pi$, e
+    \item $\bm{\mathbb{R}^k}$ is a k-dimensional space
+\end{itemize}
+
+\subsection{Intervals}
+
+\begin{itemize}
+    \itemsep-0.5em 
+    \item \textbf{Open}: $(-1,2)$, does not include endpoints, so greater than $-1$ and less than $2$. 
+    \item \textbf{Closed}: $[-1,2]$, includes endpoints: greater than or equal to $-1$ and less than or equal to $2$.
+    \begin{tikzpicture}
+        \draw[latex-latex] (-3,0) -- (3,0) ; %edit here for the axis
+        \foreach \x in  {0} % edit here for the vertical lines
+        \draw[shift={(\x,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+        \foreach \x in {0} % edit here for the numbers
+        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-3pt) node[below] 
+        {$\x$};
+        \draw[thin, yshift=2ex]  (-1,0) -- (2,0);
+        \draw[thin] (-1,0.2) -- (-1,0.5);
+        \draw[thin] (2,0.2) -- (2,0.5);
+    \end{tikzpicture}
+    \item \textbf{Half-closed}: $(-1,2]$, includes endpoints: greater than or equal to $-1$ and less than or equal to $2$.
+    \begin{tikzpicture}
+        \draw[latex-latex] (-3,0) -- (3,0) ; %edit here for the axis
+        \foreach \x in  {0} % edit here for the vertical lines
+        \draw[shift={(\x,0)},color=black] (0pt,3pt) -- (0pt,-3pt);
+        \foreach \x in {0} % edit here for the numbers
+        \draw[shift={(\x,0)},color=black] (0pt,0pt) -- (0pt,-3pt) node[below] 
+        {$\x$};
+        \draw[thin, yshift=2ex]  (-1,0) -- (2,0);
+        \draw (-1.05,0.35) circle[radius=2pt, fill = white];
+        \draw[thin] (2,0.2) -- (2,0.5);
+    \end{tikzpicture}
+\end{itemize}
+
+\subsection{Levels of measurement}
+
+\begin{itemize}
+    \itemsep-0.5em 
+    \item \textbf{Nominal}: No mathematical relationship among the values
+    \vspace{-0.75em}
+    \begin{itemize}
+        \item E.g., race, gender, country, party
+    \end{itemize}
+    \item \textbf{Ordinal}: Ranking, but cannot do arithmetic because the distance between values is not equal.
+    \vspace{-0.75em}
+    \begin{itemize}
+        \item E.g., K-12, age cohort, ideology (left-to-right)
+    \end{itemize}
+    \item \textbf{Interval}: Fixed differences, but zero is arbitrary
+    \vspace{-0.75em}
+    \begin{itemize}
+        \item E.g., temperature, date/time
+    \end{itemize}
+    \item \textbf{Ratio}: Fixed differences with a true zero
+    \vspace{-0.75em}
+    \begin{itemize}
+        \item E.g., age, length, income, votes
+    \end{itemize}
+\end{itemize}
+
+\subsection{Sets}
+
+\begin{itemize}
+    \itemsep-0.5em 
+    \item A \textbf{set}, $S = \{\}$, is a collection of elements.
+    \begin{itemize}
+        \item Order does not matter: $S = \{x,y,z\} = \{z,y,x\}$
+        \begin{itemize}
+            \item $x \in S$, meaning $x$ is an element of $S$
+            \item $a \notin S$, meaning $a$ is not an element of $S$
+        \end{itemize}
+    \end{itemize}
+    \item Other examples:
+    \begin{itemize}
+        \item $\mathbb{Z} = \{..., -2, -1, 0, 1, 2, ...\}$ or $\{x|x\text{ is an integer}\}$
+        \item $T = \{x|8 \geq x \geq 7 \}$ or $T = [7,8]$
+    \end{itemize}
+    \item Set notation:
+    \begin{itemize}
+        \item $S = \{x,y,z\}$, $T = \{a,b,x\}$, $N = \{a,b\}$
+        \begin{itemize}
+            \item Intersection: $T \cap S = \{x\}$
+            \begin{itemize}
+                \item $N \cap S = \emptyset$: ``empty set''
+            \end{itemize}
+            \item Union: $N \cup S = \{a,b,x,y,z\}$
+            \item Complement (not in the set): $(T \cap S)^c = \{a,b,y,z\}$
+        \end{itemize}
+        \item $\mathbb{U}$: universal set, all possible values
+        \item $A = \{x,y\}$
+        \begin{itemize}
+            \item $A \subset S$: ``A is a subset of S''
+            \item If $\not\subset$, then not a subset of. All subsets of $A$: $\{x\}$, $\{y\}$, $\{\emptyset\}$, $\{x,y\}$
+        \end{itemize}
+    \end{itemize}
+    \item Transitivity:
+    \begin{itemize}
+        \item If $Z \in Q$ and $Q \in R$, then $Z \in R$
+    \end{itemize}
+    \item Disjoint:
+    \begin{itemize}
+        \item No elements in common, more formally, two sets are disjoint if the intercept of sets is the null set: $N \cap S = \{ \emptyset \}$
+    \end{itemize}  
+\end{itemize}
+
+\subsection{Independent and Dependent Variables}
+
+Let $y = f(x)$, where $y$ is the outcome and $x$ the input.
+
+\begin{itemize}
+    \item \textbf{Independent variable}: the input -- $x$
+    \item \textbf{Dependent variable}: outcome -- $y$
+\end{itemize}
+
+\noindent In a linear model, i.e. $y = \alpha + \beta x$, the dependent variable is $y$ and the independent variable is $x$.
+
+\subsection{Functions}
+
+\begin{itemize}
+    \item $f(x) = y$
+    \item \textbf{Constant function}: a function whose outcome is the same no matter the input. If $f(x) = c$, then no matter $x$ the output is $c$.
+    \item \textbf{Polynomial function}: $y = a + bx + cx^2$ 
+    \item \textbf{Rational function}: can be defined by a fraction (ratio):
+    \begin{equation*}
+        f(x,y) = \frac{a + bx^2}{1 + y}
+    \end{equation*} 
+\end{itemize}
+
+\subsection{Inequalities and Absolute Values}
+
+\[ |x| = \sqrt{x^2} = \begin{cases} 
+    x & \text{if } x > 0 \\
+    -x & \text{if } x < 0 \\
+    0 & \text{if } x = 0 
+\end{cases} \]
+
+\noindent Useful properties:
+
+\begin{itemize}
+    \itemsep-0.25em 
+    \item $|m| + |n| \geq |m + n|$
+    \item $|m| \times |n| = |m \times n|$
+\end{itemize}
+
+\subsection{Exponent Rules}
+
+\begin{itemize}
+    \itemsep-0.25em 
+    \item $x^n = x \cdot x \cdot x \cdot x \cdot ... \cdot x$ $n$ times; $2^2 = 2 \cdot 2 = 4$
+    \item $x^0 = 1$
+    \item $x^m \cdot x^n = x^{m+n}$
+    \item $\frac{x^m}{x^n} = x^{m-n}$
+    \item $\frac{1}{x^m} = x^{-m}$
+    \item $x^1 = x$
+    \item $x^{\frac{1}{m}} = \sqrt[m]{x}$
+    \item $(x^m)^n = x^{m \cdot n}$
+    \item $x^m \cdot y^m = (xy)^m$
+\end{itemize}
+
+\noindent But:
+
+\begin{itemize}
+    \item $x^m + y^n \neq (x + y)^{m + n}$
+\end{itemize}
+
+\subsection{Commutative, Associative, and Distributive Laws}
+
+\begin{itemize}
+    \itemsep-0.5em 
+    \item \textbf{Associative property}: rewriting the parentheses does not change the outcome
+    \begin{itemize}
+        \item $(a + b) + c = a + (b + c)$
+        \item $(a \cdot b) \cdot c = a \cdot (b \cdot c)$
+    \end{itemize}
+    \item \textbf{Commutative property}: order of operands (inputs) does not change the outcome
+    \begin{itemize}
+        \item $a + b = b + a$
+        \item $a \cdot b = b \cdot a$
+    \end{itemize}
+    \item \textbf{Distributive property}:
+    \begin{itemize}
+        \item $a(b + c) = ab + ac$
+    \end{itemize}
+\end{itemize}
+
+\noindent Also relevant:
+
+\begin{itemize}
+    \itemsep-0.5em 
+    \item \textbf{Inverse property}: 
+    \begin{itemize}
+        \item For any $x$, there exists a $-x$ such that $-x + x = 0$.
+        \begin{itemize}
+            \item Formally\footnote{$\exists$ = `there exists'}: $\exists(-x) \text{ s.t. } -x + x = 0$
+        \end{itemize}
+        \item For any $x$, there exists a $x^{-1}$ such that $x \cdot x^{-1} = 1$.
+        \begin{itemize}
+            \item Formally: $\exists(x^{-1}) \text{ s.t. } x^{-1} \cdot x = 1$
+        \end{itemize}
+    \end{itemize}
+
+    \item \textbf{Identity property}:
+    \begin{itemize}
+        \item $\exists(0) \text{ s.t. } x + 0 = x$
+        \item $\exists(1) \text{ s.t. } x \cdot 1 = x$
+        \item Commonly, we see: $\text{I}(x) = x$
+    \end{itemize}
+
+\end{itemize}

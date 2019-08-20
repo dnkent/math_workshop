@@ -1,0 +1,144 @@
+% !BIB program = bibtex
+
+\documentclass[11pt]{article}
+
+% Math libraries
+\usepackage[charter,cal=cmcal]{mathdesign} 
+\usepackage{amsmath}
+% For vertical line in matrix
+% https://tex.stackexchange.com/questions/33519/vertical-line-in-matrix-using-latexit
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+    \hskip -\arraycolsep
+    \let\@ifnextchar\new@ifnextchar
+    \array{#1}}
+\makeatother
+
+\usepackage{mathabx}
+\usepackage{bm}
+
+% Margins
+\usepackage[margin = 1in]{geometry}
+
+% Spacing
+\usepackage{setspace}
+
+% Links
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=blue,
+    citecolor=black
+}
+
+% Itemize
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand{\labelitemii}{$\circ$}
+\renewcommand{\labelitemiii}{$\blackdiamond$} % mathabx package
+\renewcommand{\labelitemiv}{$\diamond$}
+
+
+% Fancy headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.3pt}
+\headheight 15.0pt
+\lhead{Math Workshop Lectures (2019)}
+\chead{}
+\rhead{Daniel Kent}
+%\lfoot{Syllabus version 1.0}
+\cfoot{}
+\rfoot{\thepage}
+
+% Bibliography
+\usepackage[round]{natbib}
+
+% Tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations.pathreplacing}  
+\usetikzlibrary{plotmarks}
+
+% Title
+\usepackage{titling}
+% Center: https://tex.stackexchange.com/questionkent.249@osu.edus/290432/vertically-center-title-page-article
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}
+\renewcommand\maketitlehookd{\vfill\null}
+
+\title{Lecture Notes, Math Workshop 2019}
+\author{Daniel Kent \\ \texttt{kent.249@osu.edu}}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+% Table of contents
+\tableofcontents
+\setcounter{tocdepth}{1} % Show sections
+\setcounter{tocdepth}{2} % + subsections
+\setcounter{tocdepth}{3} % + subsubsections
+
+\newpage
+
+% Lecture 1: Intro and basic math
+\input{lecture1.tex}
+
+\newpage
+
+% Lecture 2: Basic math 2
+\input{lecture2.tex}
+
+\newpage
+
+% Lecture 3: Linear algebra I
+\input{lecture3.tex}
+
+\newpage
+
+% Lecture 4: Linear algebra II
+\input{lecture4.tex}
+
+\newpage 
+
+% Lecture 5: Linear algebra III
+\input{lecture5.tex}
+
+\newpage
+
+% Lecture 6: Calculus I
+\input{lecture6.tex}
+    
+\newpage
+
+% Lecture 7: Calculus II
+\input{lecture7.tex}
+
+\newpage
+
+% Lecture 8: Calculus III
+\input{lecture8.tex}
+
+
+\newpage
+
+% Lecture 9: Calculus IV
+\input{lecture9.tex}
+
+\newpage
+
+% Lecture 10: Calculus V
+\input{lecture10.tex}
+
+
+\newpage
+\bibliographystyle{abbrvnat}
+\bibliography{math_lectures}
+
+
+\end{document}
